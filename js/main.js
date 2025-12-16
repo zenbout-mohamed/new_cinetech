@@ -16,9 +16,7 @@ import {
   getComments 
 } from './storage.js';
 
-/* ==============================
-   INITIALISATION GLOBALE
-============================== */
+/* INITIALISATION GLOBALE */
 document.addEventListener('DOMContentLoaded', () => {
   initSearch('header input[type="text"]');
 
@@ -43,9 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-/* ==============================
-   PAGE ACCUEIL
-============================== */
+/* PAGE ACCUEIL */
 async function loadHome() {
   const moviesContainer = document.querySelector('#popular-movies');
   const seriesContainer = document.querySelector('#popular-series');
@@ -70,9 +66,7 @@ async function loadHome() {
   }
 }
 
-/* ==============================
-   PAGE FILMS
-============================== */
+/* PAGE FILMS */
 let moviePage = 1;
 async function loadMovies() {
   const container = document.querySelector('#movies-list');
@@ -104,9 +98,7 @@ async function loadMovies() {
   render();
 }
 
-/* ==============================
-   PAGE SERIES
-============================== */
+/* PAGE SERIES */
 let seriesPage = 1;
 async function loadSeries() {
   const container = document.querySelector('#series-list');
@@ -138,9 +130,7 @@ async function loadSeries() {
   render();
 }
 
-/* ==============================
-   PAGE DETAIL
-============================== */
+/* PAGE DETAIL */
 async function loadDetail() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
@@ -224,24 +214,33 @@ async function loadDetail() {
   }
 }
 
-/* ==============================
-   PAGE FAVORIS
-============================== */
+/* PAGE FAVORIS */
+
 function loadFavorites() {
   const container = document.querySelector('#favorites-list');
-  clearContainer(container);
-  getFavorites().forEach(item => {
-    const card = createCard(item, item.type);
-    container.appendChild(card);
+  clearContainer(container); 
 
-    // bouton supprimer
-    const btn = document.createElement('button');
-    btn.textContent = 'Supprimer';
-    btn.className = 'px-2 py-1 bg-red-600 rounded mt-2';
-    btn.addEventListener('click', () => {
-      removeFavorite(item.id, item.type);
-      loadFavorites();
+  const favorites = getFavorites();
+  
+  if (favorites.length === 0) {
+    const noFavoritesMessage = document.createElement('p');
+    noFavoritesMessage.textContent = 'Aucun favori ajouté.';
+    container.appendChild(noFavoritesMessage);
+  } else {
+    favorites.forEach(item => {
+      const card = createCard(item, item.type); 
+      container.appendChild(card);
+
+      
+      const btn = document.createElement('button');
+      btn.textContent = 'Supprimer';
+      btn.className = 'px-2 py-1 bg-red-600 rounded mt-2';
+      btn.addEventListener('click', () => {
+        removeFavorite(item.id, item.type); 
+        loadFavorites(); 
+      });
+      card.appendChild(btn); 
     });
-    card.appendChild(btn);
-  });
+  }
 }
+
