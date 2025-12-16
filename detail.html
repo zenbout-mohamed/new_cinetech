@@ -23,39 +23,40 @@
         </section>
     </header>
     <main class="max-w-7xl mx-auto px-4 py-10">
-        <section class="grid md:grid-cols-3 gap-8 mb-12">
-            <div class="bg-slate-800 rounded-lg h-96"></div>
+  <div id="detail-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div id="poster" class="rounded-lg overflow-hidden bg-slate-800 h-96"></div>
 
-            <div class="md:col-span-2">
-                <h1 class="text-3xl font-bold mb-4">Titre du film</h1>
-                <p class="text-slate-300 mb-4">Résumé du film ou de la série...</p>
-                <ul class="text-sm space-y-1">
-                    <li><strong>Genres :</strong> Action, Drame</li>
-                    <li><strong>Pays :</strong> USA</li>
-                    <li><strong>Note :</strong> ⭐ 8.5</li>
-                </ul>
-                <button class="mt-6 px-4 py-2 bg-indigo-600 rounded">⭐ Ajouter aux favoris</button>
-            </div>
-        </section>
-        <section class="mb-12">
-            <h2 class="text-2xl font-bold mb-4">🎭 Casting</h2>
-            <div class="flex gap-4 overflow-x-auto">
-                <div class="bg-slate-800 rounded-lg w-32 h-48"></div>
-                <div class="bg-slate-800 rounded-lg w-32 h-48"></div>
-                <div class="bg-slate-800 rounded-lg w-32 h-48"></div>
-            </div>
-        </section>
-        <section>
-            <h2 class="text-2xl font-bold mb-4">🔁 Contenus similaires</h2>
-            <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4">
-                <div class="bg-slate-800 rounded-lg h-48"></div>
-                <div class="bg-slate-800 rounded-lg h-48"></div>
-                <div class="bg-slate-800 rounded-lg h-48"></div>
-            </div>
-        </section>
-    </main>
+    <div class="md:col-span-2 flex flex-col gap-4">
+      <h1 id="title" class="text-3xl font-bold"></h1>
+      <p id="overview" class="text-slate-300"></p>
+      <p id="genres" class="text-slate-400"></p>
+      <p id="release-date" class="text-slate-400"></p>
+      <p id="rating" class="text-slate-400"></p>
 
-    <script type="module" src="js/main.js"></script>
+      <button id="favorite-btn" class="px-4 py-2 bg-indigo-600 rounded w-40">Ajouter aux favoris</button>
+    </div>
+  </div>
 
+  <section class="mt-10">
+    <h2 class="text-2xl font-bold mb-4">Casting</h2>
+    <div id="casting" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4"></div>
+  </section>
+
+  <section class="mt-10">
+    <h2 class="text-2xl font-bold mb-4">Séries / Films similaires</h2>
+    <div id="similar" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4"></div>
+  </section>
+
+  <section class="mt-10">
+    <h2 class="text-2xl font-bold mb-4">Commentaires</h2>
+    <form id="comment-form" class="flex flex-col gap-2">
+      <textarea id="comment-input" placeholder="Écrire un commentaire..." class="rounded p-2 text-slate-900"></textarea>
+      <button type="submit" class="px-4 py-2 bg-indigo-600 rounded w-40">Envoyer</button>
+    </form>
+    <ul id="comments-list" class="mt-4 flex flex-col gap-2"></ul>
+  </section>
+</main>
+
+<script type="module" src="js/main.js"></script>
 </body>
 </html>
