@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cinetech -Détails</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-slate-950 text-white">
     <header class="bg-slate-900 text-white sticky top-0 z-50">
         <section class="max-w-7xl mx-auto px-4 py-4 flex items-center gap-6">
             <a href="index.html" class="text-2xl font-bold">Cinetech</a>
@@ -16,8 +15,6 @@
                 <a href="series.html" class="hover:text-indigo-400">Séries</a>
                 <a href="favoris.html" class="hover:text-indigo-400">Favoris</a>
             </nav>
-
-
             <div class="ml-auto relative w-full max-w-xs">
                 <input type="text" placeholder="Rechercher un film ou une série..."
                     class="w-full rounded-lg px-4 py-2 text-slate-900 focus:outline-none" />
@@ -25,5 +22,37 @@
             </div>
         </section>
     </header>
+    <main class="max-w-7xl mx-auto px-4 py-10">
+        <section class="grid md:grid-cols-3 gap-8 mb-12">
+            <div class="bg-slate-800 rounded-lg h-96"></div>
+
+            <div class="md:col-span-2">
+                <h1 class="text-3xl font-bold mb-4">Titre du film</h1>
+                <p class="text-slate-300 mb-4">Résumé du film ou de la série...</p>
+                <ul class="text-sm space-y-1">
+                    <li><strong>Genres :</strong> Action, Drame</li>
+                    <li><strong>Pays :</strong> USA</li>
+                    <li><strong>Note :</strong> ⭐ 8.5</li>
+                </ul>
+                <button class="mt-6 px-4 py-2 bg-indigo-600 rounded">⭐ Ajouter aux favoris</button>
+            </div>
+        </section>
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-4">🎭 Casting</h2>
+            <div class="flex gap-4 overflow-x-auto">
+                <div class="bg-slate-800 rounded-lg w-32 h-48"></div>
+                <div class="bg-slate-800 rounded-lg w-32 h-48"></div>
+                <div class="bg-slate-800 rounded-lg w-32 h-48"></div>
+            </div>
+        </section>
+        <section>
+            <h2 class="text-2xl font-bold mb-4">🔁 Contenus similaires</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4">
+                <div class="bg-slate-800 rounded-lg h-48"></div>
+                <div class="bg-slate-800 rounded-lg h-48"></div>
+                <div class="bg-slate-800 rounded-lg h-48"></div>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
