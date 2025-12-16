@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinetech - Films</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<header class="bg-slate-900 text-white sticky top-0 z-50">
+        <section class="max-w-7xl mx-auto px-4 py-4 flex items-center gap-6">
+            <a href="index.html" class="text-2xl font-bold">Cinetech</a>
+            <nav class="hidden md:flex gap-6 text-sm">
+                <a href="films.html" class="hover:text-indigo-400">Films</a>
+                <a href="series.html" class="hover:text-indigo-400">Séries</a>
+                <a href="favoris.html" class="hover:text-indigo-400">Favoris</a>
+            </nav>
+
+
+            <div class="ml-auto relative w-full max-w-xs">
+                <input type="text" placeholder="Rechercher un film ou une série..."
+                    class="w-full rounded-lg px-4 py-2 text-slate-900 focus:outline-none" />
+                <ul class="absolute left-0 right-0 mt-2 bg-white text-slate-800 rounded-lg shadow-lg hidden"></ul>
+            </div>
+        </section>
+    </header>
