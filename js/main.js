@@ -3,52 +3,58 @@ import { getPopularMovies, getPopularSeries } from './api.js';
 import { createCard, clearContainer } from './ui.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  initSearch('header input[type=\"text\"]');
+initSearch('header input[type="text"]');
 
-  const page = document.body.dataset.page;
+const page = document.body.dataset.page;
 
-  switch (page) {
-    case 'home':
-      loadHome();
-      break;
-    case 'films':
-      loadMovies();
-      break;
-    case 'series':
-      loadSeries();
-      break;
-    case 'detail':
-      loadDetail();
-      break;
-    case 'favorites':
-      loadFavorites();
-      break;
-  }
+switch (page) {
+case 'home':
+loadHome();
+break;
+case 'films':
+loadMovies();
+break;
+case 'series':
+loadSeries();
+break;
+case 'detail':
+loadDetail();
+break;
+case 'favorites':
+loadFavorites();
+break;
+}
 });
 
+/* PAGE ACCUEIL */
 async function loadHome() {
-  const moviesContainer = document.querySelector('#popular-movies');
-  const seriesContainer = document.querySelector('#popular-series');
+const moviesContainer = document.querySelector('#popular-movies');
+const seriesContainer = document.querySelector('#popular-series');
 
-  try {
-    const movies = await getPopularMovies();
-    const series = await getPopularSeries();
+try {
+const movies = await getPopularMovies();
+const series = await getPopularSeries();
 
-    clearContainer(moviesContainer);
-    clearContainer(seriesContainer);
+```
+clearContainer(moviesContainer);
+clearContainer(seriesContainer);
 
-    movies.results.slice(0, 5).forEach(movie => {
-      moviesContainer.appendChild(createCard(movie, 'movie'));
-    });
+movies.results.slice(0, 5).forEach(movie => {
+  moviesContainer.appendChild(createCard(movie, 'movie'));
+});
 
-    series.results.slice(0, 5).forEach(tv => {
-      seriesContainer.appendChild(createCard(tv, 'tv'));
-    });
+series.results.slice(0, 5).forEach(tv => {
+  seriesContainer.appendChild(createCard(tv, 'tv'));
+});
+```
 
-  } catch (error) {
-    console.error(error);
-  }
+} catch (error) {
+console.error(error);
 }
+}
+
+
+// PAGE FILMS
 
 let moviePage = 1;
 
@@ -58,12 +64,16 @@ async function loadMovies() {
   const prevBtn = document.querySelector('#prev');
 
   async function render() {
-    const data = await getPopularMovies(moviePage);
-    clearContainer(container);
+    try {
+      const data = await getPopularMovies(moviePage);
+      clearContainer(container);
 
-    data.results.forEach(movie => {
-      container.appendChild(createCard(movie, 'movie'));
-    });
+      data.results.forEach(movie => {
+        container.appendChild(createCard(movie, 'movie'));
+      });
+    } catch (error) {
+      console.error('Erreur lors du chargement des films :', error);
+    }
   }
 
   nextBtn.addEventListener('click', () => {
@@ -79,39 +89,12 @@ async function loadMovies() {
   render();
 }
 
-let seriesPage = 1;
-
-async function loadSeries() {
-  const container = document.querySelector('#series-list');
-  const nextBtn = document.querySelector('#next');
-  const prevBtn = document.querySelector('#prev');
-
-  async function render() {
-    const data = await getPopularSeries(seriesPage);
-    clearContainer(container);
-
-    data.results.forEach(series => {
-      container.appendChild(createCard(series, 'tv'));
-    });
-  }
-
-  nextBtn.addEventListener('click', () => {
-    seriesPage++;
-    render();
-  });
-
-  prevBtn.addEventListener('click', () => {
-    if (seriesPage > 1) seriesPage--;
-    render();
-  });
-
-  render();
-}
-
+/* PAGE DÉTAIL */
 function loadDetail() {
-  console.log('Page détail chargée');
+console.log('Page détail chargée');
 }
 
+/* PAGE FAVORIS */
 function loadFavorites() {
-  console.log('Page favoris chargée');
+console.log('Page favoris chargée');
 }
