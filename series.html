@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cinetech - Series</title>
     <script src="https://cdn.tailwindcss.com"></script>
-</head>  
+</head>
+
 <body data-page="series" class="bg-slate-950 text-white">
-<header class="bg-slate-900 text-white sticky top-0 z-50">
+    <header class="bg-slate-900 text-white sticky top-0 z-50">
         <section class="max-w-7xl mx-auto px-4 py-4 flex items-center gap-6">
             <a href="index.html" class="text-2xl font-bold">Cinetech</a>
             <nav class="hidden md:flex gap-6 text-sm">
@@ -17,7 +18,6 @@
                 <a href="favoris.html" class="hover:text-indigo-400">Favoris</a>
             </nav>
 
-
             <div class="ml-auto relative w-full max-w-xs">
                 <input type="text" placeholder="Rechercher un film ou une série..."
                     class="w-full rounded-lg px-4 py-2 text-slate-900 focus:outline-none" />
@@ -25,10 +25,16 @@
             </div>
         </section>
     </header>
+    <main class="max-w-7xl mx-auto px-4 py-10">
+        <h1 class="text-3xl font-bold mb-6">📺 Séries</h1>
 
+        <div id="series-list" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4"></div>
 
-
+        <div class="flex justify-center gap-4 mt-10">
+            <button id="prev" class="px-4 py-2 bg-slate-700 rounded">Précédent</button>
+            <button id="next" class="px-4 py-2 bg-indigo-600 rounded">Suivant</button>
+        </div>
+    </main>
     <script type="module" src="js/main.js"></script>
-
-</body> 
+</body>
 </html>

@@ -53,6 +53,39 @@ console.error(error);
 }
 }
 
+/* PAGE SÉRIES */
+let seriesPage = 1;
+
+async function loadSeries() {
+  const container = document.querySelector('#series-list');
+  const nextBtn = document.querySelector('#next');
+  const prevBtn = document.querySelector('#prev');
+
+  async function render() {
+    try {
+      const data = await getPopularSeries(seriesPage);
+      clearContainer(container);
+
+      data.results.forEach(series => {
+        container.appendChild(createCard(series, 'tv'));
+      });
+    } catch (error) {
+      console.error('Erreur lors du chargement des séries :', error);
+    }
+  }
+
+  nextBtn.addEventListener('click', () => {
+    seriesPage++;
+    render();
+  });
+
+  prevBtn.addEventListener('click', () => {
+    if (seriesPage > 1) seriesPage--;
+    render();
+  });
+
+  render();
+}
 
 // PAGE FILMS
 
