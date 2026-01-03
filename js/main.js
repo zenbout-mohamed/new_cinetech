@@ -237,7 +237,7 @@ function loadFavorites() {
       btn.className = 'px-2 py-1 bg-red-600 rounded mt-2';
       btn.addEventListener('click', () => {
         removeFavorite(item.id, item.type); 
-        loadFavorites(); 
+        loadFavorites();   
       });
       card.appendChild(btn); 
     });
